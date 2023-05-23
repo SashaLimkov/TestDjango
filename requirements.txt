@@ -1,0 +1,4 @@
+django
+django-mptt
+django-mptt-admin
+django-import-export
