@@ -1,0 +1,26 @@
+{% extends "tree/base_generic.html" %}
+{% load mptt_tags %}
+{% block css %}
+    {% load static %}
+    <link href="{% static 'test.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block content %}
+<ul class="tree">
+    {% recursetree nodes %}
+        <li> 
+            {% if node.is_leaf_node %}
+            <a href="/info/{{ node.id }}">{{ node.title }} </a>
+            {% else %}
+            <details open>
+                <summary> <a href="/info/{{ node.id }}">{{ node.title }} </a></summary>
+                    {% if not node.is_leaf_node %}
+                        <ul class="children">
+                            {{ children }}
+                        </ul>
+                    {% endif %}
+            </details>
+            {% endif %}
+        </li>
+    {% endrecursetree %}
+</ul>
+{% endblock %}

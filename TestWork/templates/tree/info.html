@@ -1,0 +1,17 @@
+{% extends "tree/base_generic.html" %}
+{% block css %}
+    {% load static %}
+    <link href="{% static 'test.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block content %}
+
+    <h1>{{ title }}</h1>
+    <p>{{ description }}</p>
+
+    <h5> Файлы </h5>
+    <ul>
+    {% for file in files_list %}
+        <li><p class="dfile"><a href="{{ file.file.url }}" download>Скачать {{ file.description }}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}
